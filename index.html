@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Shubham Kumar Shivam — Profile Hub
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet" />
+    <style>
+      :root{
+    --ink:#0B1120;
+    --ink-2:#131B33;
+    --ink-3:#1B2648;
+    --paper:#F5F1E7;
+    --paper-line:#D8D2C0;
+    --ink-text:#141416;
+    --muted-on-paper:#6F6A5D;
+    --copper:#C0632F;
+    --copper-bright:#E9905A;
+    --teal:#2F7C74;
+    --text-on-dark:#D6DAE6;
+    --faint-on-dark:#6B7594;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html,body{
+    margin:0;
+    padding:0;
+    min-height:100vh;
+    background:
+      radial-gradient(circle at 20% 0%, #182353 0%, transparent 45%),
+      radial-gradient(circle at 85% 90%, #14304a 0%, transparent 50%),
+      var(--ink);
+    font-family:&#39;Space Mono&#39;, monospace;
+    color:var(--text-on-dark);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  body{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:30px 16px 22px;
+  }
+
+  body::before{
+    content:&#34;&#34;;
+    position:fixed;
+    inset:0;
+    background-image:
+      linear-gradient(rgba(214,218,230,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(214,218,230,0.05) 1px, transparent 1px);
+    background-size:34px 34px;
+    pointer-events:none;
+    mask-image:radial-gradient(circle at 50% 40%, black 0%, transparent 72%);
+  }
+
+  .stage{
+    position:relative;
+    width:100%;
+    max-width:400px;
+  }
+
+  .punch-wrap{
+    display:flex;
+    justify-content:center;
+    margin-bottom:-13px;
+    position:relative;
+    z-index:3;
+  }
+  .punch{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:var(--ink);
+    border:3px solid var(--ink-3);
+    box-shadow:
+      inset 0 2px 4px rgba(0,0,0,0.6),
+      0 0 0 6px rgba(214,218,230,0.03);
+    position:relative;
+  }
+  .punch::after{
+    content:&#34;&#34;;
+    position:absolute;
+    inset:9px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #2b355e, #0B1120 75%);
+    animation:pulseHole 3.6s ease-in-out infinite;
+  }
+  @keyframes pulseHole{
+    0%,100%{ opacity:.55; }
+    50%{ opacity:1; }
+  }
+
+  .badge{
+    position:relative;
+    background:var(--paper);
+    color:var(--ink-text);
+    border-radius:16px;
+    padding:26px 22px 18px;
+    box-shadow:
+      0 40px 80px -24px rgba(0,0,0,0.65),
+      0 0 0 1px rgba(0,0,0,0.05),
+      0 0 60px -20px rgba(192,99,47,0.25);
+    overflow:hidden;
+    opacity:0;
+    transform:translateY(14px);
+    animation:cardIn .7s cubic-bezier(.2,.8,.2,1) .15s forwards;
+  }
+  @keyframes cardIn{
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  .badge::before{
+    content:&#34;&#34;;
+    position:absolute;
+    top:0; left:0; right:0;
+    height:7px;
+    background:linear-gradient(90deg, var(--copper), #F0CE84, var(--teal), var(--copper));
+    background-size:300% 100%;
+    animation:foilShift 6s linear infinite;
+  }
+
+  .badge::after{
+    content:&#34;&#34;;
+    position:absolute;
+    inset:0;
+    border-radius:16px;
+    box-shadow:inset 0 0 0 1px rgba(192,99,47,0.12);
+    pointer-events:none;
+  }
+  @keyframes foilShift{
+    0%{ background-position:0% 0%; }
+    100%{ background-position:300% 0%; }
+  }
+
+  .scan-sweep{
+    position:absolute;
+    left:0; right:0;
+    height:60px;
+    top:-60px;
+    background:linear-gradient(to bottom, rgba(192,99,47,0) 0%, rgba(192,99,47,0.4) 50%, rgba(192,99,47,0) 100%);
+    pointer-events:none;
+    animation:sweep 1.4s cubic-bezier(.3,.7,.3,1) .5s 1;
+    z-index:5;
+  }
+  @keyframes sweep{
+    0%{ top:-60px; }
+    100%{ top:105%; }
+  }
+
+  .top-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:13px;
+  }
+
+  .eyebrow{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.13em;
+    color:var(--copper);
+    display:flex;
+    align-items:center;
+    gap:8px;
+    min-height:14px;
+  }
+  .eyebrow .dot{
+    width:6px; height:6px; border-radius:50%;
+    background:var(--copper);
+    box-shadow:0 0 0 3px rgba(192,99,47,0.18);
+    flex-shrink:0;
+  }
+  .eyebrow .typed::after{
+    content:&#34;▍&#34;;
+    animation:blink 1s step-end infinite;
+    color:var(--copper);
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  .monogram-wrap{
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    padding:2px;
+    background:conic-gradient(from 180deg, var(--copper), #F0CE84, var(--teal), var(--copper));
+    flex-shrink:0;
+  }
+  .monogram{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    background:var(--ink-text);
+    color:var(--paper);
+    font-family:&#39;Fraunces&#39;, serif;
+    font-size:11.5px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    letter-spacing:.02em;
+  }
+
+  h1{
+    font-family:&#39;Fraunces&#39;, serif;
+    font-weight:700;
+    font-size:25px;
+    line-height:1.1;
+    margin:2px 0 6px;
+    letter-spacing:-0.01em;
+    background:linear-gradient(100deg, var(--ink-text) 35%, var(--copper) 68%, var(--ink-text) 90%);
+    background-size:220% 100%;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:var(--ink-text);
+  }
+  @supports (-webkit-background-clip:text){
+    h1{ -webkit-text-fill-color:transparent; }
+  }
+
+  .role-line{
+    font-size:13px;
+    color:var(--copper);
+    letter-spacing:.02em;
+    font-weight:700;
+    margin-bottom:5px;
+  }
+
+  .stack-line{
+    font-size:11px;
+    font-weight:700;
+    color:var(--muted-on-paper);
+    letter-spacing:.03em;
+    margin-bottom:11px;
+  }
+  .stack-line .sep{
+    color:var(--paper-line);
+    margin:0 3px;
+  }
+
+  .locale{
+    font-size:11.5px;
+    font-weight:700;
+    color:var(--muted-on-paper);
+    letter-spacing:.04em;
+    margin-bottom:14px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+
+  hr{
+    border:none;
+    border-top:1.5px dashed var(--paper-line);
+    margin:0 0 13px;
+    position:relative;
+  }
+  hr::before, hr::after{
+    content:&#34;&#34;;
+    position:absolute;
+    top:-5px;
+    width:9px; height:9px;
+    border-radius:50%;
+    background:var(--ink);
+  }
+  hr::before{ left:-22px; }
+  hr::after{ right:-22px; }
+
+  .links{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+
+  .link-btn{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    text-decoration:none;
+    color:var(--ink-text);
+    background:#fff;
+    border:1.5px solid var(--paper-line);
+    border-radius:10px;
+    padding:11px 14px;
+    font-family:&#39;Space Mono&#39;, monospace;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:.01em;
+    min-height:42px;
+    transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease;
+    width:100%;
+    cursor:pointer;
+  }
+  .link-btn .lbl{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .link-btn .icon{
+    width:24px;
+    height:24px;
+    border-radius:7px;
+    background:var(--paper);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+    flex-shrink:0;
+  }
+  .link-btn .tag{
+    font-size:10px;
+    font-weight:700;
+    color:var(--muted-on-paper);
+    letter-spacing:.06em;
+  }
+  .link-btn .arrow{
+    font-size:14px;
+    color:var(--muted-on-paper);
+    transition:transform .18s ease, color .18s ease;
+    flex-shrink:0;
+  }
+  .link-btn:hover, .link-btn:focus-visible{
+    border-color:var(--copper);
+    transform:translateY(-2px);
+    box-shadow:0 12px 20px -10px rgba(192,99,47,0.5);
+    outline:none;
+  }
+  .link-btn:hover .arrow, .link-btn:focus-visible .arrow{
+    transform:translate(3px,-3px);
+    color:var(--copper);
+  }
+  .link-btn.primary{
+    background:var(--ink-text);
+    color:var(--paper);
+    border-color:var(--ink-text);
+  }
+  .link-btn.primary .icon{ background:rgba(245,241,231,0.1); }
+  .link-btn.primary .tag{ color:#C7C0AC; }
+  .link-btn.primary .arrow{ color:var(--paper); }
+  .link-btn.primary:hover{
+    background:var(--copper);
+    border-color:var(--copper);
+    box-shadow:0 14px 24px -10px rgba(192,99,47,0.65);
+  }
+
+  /* shared modal styles — certificates + resume download, overlay never shifts page layout */
+  .modal-backdrop{
+    position:fixed;
+    inset:0;
+    background:rgba(11,17,32,0.78);
+    backdrop-filter:blur(4px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .2s ease;
+    z-index:20;
+  }
+  .modal-backdrop.open{
+    opacity:1;
+    pointer-events:auto;
+  }
+  .modal-card{
+    position:relative;
+    background:var(--paper);
+    color:var(--ink-text);
+    border-radius:14px;
+    width:100%;
+    max-width:360px;
+    padding:20px 18px 18px;
+    box-shadow:0 40px 80px -20px rgba(0,0,0,0.65);
+    transform:translateY(10px) scale(.98);
+    transition:transform .2s ease;
+    overflow:hidden;
+  }
+  .modal-card::before{
+    content:&#34;&#34;;
+    position:absolute;
+    top:0; left:0; right:0;
+    height:7px;
+    background:linear-gradient(90deg, var(--copper), #F0CE84, var(--teal), var(--copper));
+  }
+  .modal-backdrop.open .modal-card{
+    transform:translateY(0) scale(1);
+  }
+  .modal-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin:5px 0 13px;
+  }
+  .modal-head h2{
+    font-family:&#39;Fraunces&#39;, serif;
+    font-weight:700;
+    font-size:18px;
+    margin:0;
+  }
+  .modal-sub{
+    font-size:11px;
+    font-weight:700;
+    color:var(--muted-on-paper);
+    letter-spacing:.03em;
+    margin:-9px 0 13px;
+  }
+  .modal-close{
+    background:none;
+    border:1.5px solid var(--paper-line);
+    color:var(--ink-text);
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    font-size:13px;
+    font-weight:700;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .modal-close:hover, .modal-close:focus-visible{
+    border-color:var(--copper);
+    color:var(--copper);
+    outline:none;
+  }
+  .cert-list{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .cert-list a, .cert-list button.cert-item{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:10px;
+    text-decoration:none;
+    color:var(--ink-text);
+    background:#fff;
+    border:1.5px solid var(--paper-line);
+    border-radius:8px;
+    padding:12px 13px;
+    font-family:&#39;Space Mono&#39;, monospace;
+    font-weight:700;
+    font-size:12.5px;
+    line-height:1.35;
+    width:100%;
+    cursor:pointer;
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .cert-list a:hover, .cert-list a:focus-visible,
+  .cert-list button.cert-item:hover, .cert-list button.cert-item:focus-visible{
+    border-color:var(--copper);
+    transform:translateX(2px);
+    outline:none;
+  }
+  .cert-list .num{
+    color:var(--copper);
+    font-size:11px;
+    margin-right:7px;
+  }
+  .cert-list .go{ color:var(--muted-on-paper); font-size:13px; flex-shrink:0; }
+
+  /* contact card - no redirect, click to copy */
+  .contact-card{
+    border:1.5px solid var(--paper-line);
+    border-radius:10px;
+    background:#fff;
+    padding:11px 13px;
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+  }
+  .contact-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    cursor:pointer;
+    background:none;
+    border:none;
+    padding:0;
+    font-family:&#39;Space Mono&#39;, monospace;
+    text-align:left;
+    width:100%;
+    color:var(--ink-text);
+  }
+  .contact-row .lbl{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:13px;
+    font-weight:700;
+  }
+  .contact-row .val{
+    font-size:11.5px;
+    font-weight:700;
+    color:var(--muted-on-paper);
+  }
+  .contact-row .copy-hint{
+    font-size:9px;
+    font-weight:700;
+    color:var(--muted-on-paper);
+    letter-spacing:.06em;
+    flex-shrink:0;
+    transition:color .15s ease;
+  }
+  .contact-row:hover .copy-hint{ color:var(--copper); }
+  .contact-divider{
+    border-top:1.5px dashed var(--paper-line);
+  }
+
+  .badge-footer{
+    margin-top:14px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:10px;
+    font-weight:700;
+    color:var(--muted-on-paper);
+    letter-spacing:.06em;
+  }
+  .badge-footer .strip{
+    display:flex; gap:3px;
+  }
+  .badge-footer .strip i{
+    width:3px; height:13px; background:var(--paper-line);
+  }
+  .badge-footer .strip i:nth-child(3n){ background:var(--copper); opacity:.6; }
+
+  .below-note{
+    text-align:center;
+    margin-top:14px;
+    font-size:11px;
+    font-weight:700;
+    color:var(--faint-on-dark);
+    letter-spacing:.05em;
+  }
+
+  .toast{
+    position:fixed;
+    left:50%;
+    bottom:28px;
+    transform:translate(-50%, 12px);
+    background:var(--ink-text);
+    color:var(--paper);
+    font-family:&#39;Space Mono&#39;, monospace;
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:.03em;
+    padding:11px 17px;
+    border-radius:8px;
+    box-shadow:0 12px 24px -8px rgba(0,0,0,0.5);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .2s ease, transform .2s ease;
+    z-index:30;
+  }
+  .toast.show{
+    opacity:1;
+    transform:translate(-50%, 0);
+  }
+
+  @media (max-width:420px){
+    h1{ font-size:22px; }
+    .badge{ padding:22px 16px 16px; }
+    .link-btn{ font-size:13px; padding:10px 12px; }
+    .role-line{ font-size:12.5px; }
+    .stack-line, .locale{ font-size:10.5px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+      animation-duration:0.01ms !important;
+      animation-iteration-count:1 !important;
+      transition-duration:0.01ms !important;
+    }
+    .badge{ opacity:1; transform:none; }
+  }
+    </style>
+  </head>
+  <body>
+    <div class="stage">
+      <div class="punch-wrap">
+        <div class="punch">
+        </div>
+      </div>
+      <div class="badge">
+        <div class="scan-sweep">
+        </div>
+        <div class="top-row">
+          <div class="eyebrow">
+            <span class="dot"></span>
+            <span id="eyebrowText" class="typed"></span>
+          </div>
+          <div class="monogram-wrap">
+            <div class="monogram">
+              SKS
+            </div>
+          </div>
+        </div>
+        <h1>
+          Shubham Kumar Shivam
+        </h1>
+        <div class="role-line">
+          AI &amp; Machine Learning Engineer
+        </div>
+        <div class="stack-line">
+          Python
+          <span class="sep">          |
+</span>
+          TensorFlow
+          <span class="sep">          |
+</span>
+          Flask
+          <span class="sep">          |
+</span>
+          NLP
+        </div>
+        <div class="locale">
+          📍 Bengaluru, India
+        </div>
+        <hr />
+        <div class="links">
+          <a class="link-btn primary" href="https://portfolio-mxx7.onrender.com/" target="_blank" rel="noopener noreferrer">          <span class="lbl">          <span class="icon">          🌐
+</span>
+          Portfolio Website
+</span>
+          <span class="arrow">          ↗
+</span>
+</a>
+          <a class="link-btn" href="https://portfolio-mxx7.onrender.com/projects" target="_blank" rel="noopener noreferrer">          <span class="lbl">          <span class="icon">          🗂️
+</span>
+          All Projects
+</span>
+          <span class="arrow">          ↗
+</span>
+</a>
+          <a class="link-btn" href="https://github.com/ShubhamAIML" target="_blank" rel="noopener noreferrer">          <span class="lbl">          <span class="icon">          💻
+</span>
+          GitHub
+          <span class="tag">          /ShubhamAIML
+</span>
+</span>
+          <span class="arrow">          ↗
+</span>
+</a>
+          <a class="link-btn" id="resumeOpenBtn" href="#">          <span class="lbl">          <span class="icon">          📄
+</span>
+          Resume
+          <span class="tag">          PDF
+</span>
+</span>
+          <span class="arrow">          ↗
+</span>
+</a>
+          <button class="link-btn" type="button" id="certOpenBtn" aria-haspopup="dialog" aria-controls="certModal">
+            <span class="lbl">            <span class="icon">            🎓
+</span>
+            Certificates
+            <span class="tag">            4 items
+</span>
+</span>
+            <span class="arrow">            ↗
+</span>
+          </button>
+          <a class="link-btn" href="https://www.linkedin.com/in/shubham-kumar-016b6816b/" target="_blank" rel="noopener noreferrer">          <span class="lbl">          <span class="icon">          🔗
+</span>
+          LinkedIn
+</span>
+          <span class="arrow">          ↗
+</span>
+</a>
+          <div class="contact-card">
+            <button class="contact-row" type="button" data-copy="+91 8227053870">
+              <span class="lbl">              📞
+              <span class="val">              +91 8227053870
+</span>
+</span>
+              <span class="copy-hint">              TAP TO COPY
+</span>
+            </button>
+            <div class="contact-divider">
+            </div>
+            <button class="contact-row" type="button" data-copy="skshivam771@gmail.com">
+              <span class="lbl">              ✉️
+              <span class="val">              skshivam771@gmail.com
+</span>
+</span>
+              <span class="copy-hint">              TAP TO COPY
+</span>
+            </button>
+          </div>
+        </div>
+        <div class="badge-footer">
+          <span id="lastUpdated">          LAST UPDATED: —
+</span>
+          <div class="strip">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+          </div>
+        </div>
+      </div>
+      <div class="below-note">
+        thanks for scanning — good to connect
+      </div>
+    </div>
+    <!-- CERTIFICATES MODAL -->
+    <div class="modal-backdrop" id="certModal" role="dialog" aria-modal="true" aria-label="Certificates">
+      <div class="modal-card">
+        <div class="modal-head">
+          <h2>
+            Certificates
+          </h2>
+          <button class="modal-close" id="certCloseBtn" aria-label="Close">
+            ✕
+          </button>
+        </div>
+        <div class="cert-list">
+          <button type="button" class="cert-item" data-cert-url="https://raw.githubusercontent.com/skshi1921/Portfolio/main/Tech%20Certificate/iitrprai_24081712_certificate.pdf" data-cert-name="Major-Certification-AI.pdf">
+            <span>            <span class="num">            01
+</span>
+            Major Certification — Artificial Intelligence
+</span>
+            <span class="go">            ⬇
+</span>
+          </button>
+          <button type="button" class="cert-item" data-cert-url="https://raw.githubusercontent.com/skshi1921/Portfolio/main/Tech%20Certificate/AI_ML%20Internship%20Certificate.pdf" data-cert-name="AI-ML-Internship-Certificate.pdf">
+            <span>            <span class="num">            02
+</span>
+            AI &amp; ML Internship Certificate
+</span>
+            <span class="go">            ⬇
+</span>
+          </button>
+          <button type="button" class="cert-item" data-cert-url="https://raw.githubusercontent.com/skshi1921/Portfolio/main/Tech%20Certificate/Masai_hackethon_Certificate.pdf" data-cert-name="xto10x-Hackathon-Certificate.pdf">
+            <span>            <span class="num">            03
+</span>
+            xto10x Hackathon Edition
+</span>
+            <span class="go">            ⬇
+</span>
+          </button>
+          <button type="button" class="cert-item" data-cert-url="https://raw.githubusercontent.com/skshi1921/Portfolio/main/Tech%20Certificate/Anveshan%20Hackthon%202025.jpg" data-cert-name="Anveshan-Hackathon-2025.jpg">
+            <span>            <span class="num">            04
+</span>
+            Anveshan Hackathon 2025
+</span>
+            <span class="go">            ⬇
+</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- CERTIFICATE DOWNLOAD CONFIRMATION MODAL -->
+    <div class="modal-backdrop" id="certDlModal" role="dialog" aria-modal="true" aria-label="Confirm download">
+      <div class="modal-card">
+        <div class="modal-head">
+          <h2>
+            Download Certificate?
+          </h2>
+          <button class="modal-close" id="certDlCloseBtn" aria-label="Close">
+            ✕
+          </button>
+        </div>
+        <p class="modal-sub" id="certDlFileName" style="margin-top:-4px; margin-bottom:14px;">
+        </p>
+        <div class="links" style="flex-direction:row; gap:8px;">
+          <button class="link-btn" id="certDlCancelBtn" type="button" style="justify-content:center;">
+            Cancel
+          </button>
+          <button class="link-btn primary" id="certDlConfirmBtn" type="button" style="justify-content:center;">
+            Yes, Download
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="toast" id="toast">
+      Copied!
+    </div>
+    <script>
+      const text = &#34;AI/ML ENGINEER — DIGITAL PROFILE&#34;;
+  const el = document.getElementById(&#39;eyebrowText&#39;);
+  const reduceMotion = window.matchMedia(&#39;(prefers-reduced-motion: reduce)&#39;).matches;
+
+  if(reduceMotion){
+    el.textContent = text;
+  } else {
+    let i = 0;
+    function type(){
+      if(i &lt;= text.length){
+        el.textContent = text.slice(0, i);
+        i++;
+        setTimeout(type, 32);
+      }
+    }
+    setTimeout(type, 1100);
+  }
+
+  // dynamic &#34;last updated&#34; month/year — updates itself every time the page loads
+  const months = [&#34;JAN&#34;,&#34;FEB&#34;,&#34;MAR&#34;,&#34;APR&#34;,&#34;MAY&#34;,&#34;JUN&#34;,&#34;JUL&#34;,&#34;AUG&#34;,&#34;SEP&#34;,&#34;OCT&#34;,&#34;NOV&#34;,&#34;DEC&#34;];
+  const now = new Date();
+  document.getElementById(&#39;lastUpdated&#39;).textContent =
+    `LAST UPDATED: ${months[now.getMonth()]} ${now.getFullYear()}`;
+
+  // embedded resume page (A4 resume with its own Download button + confirmation popup)
+  // Blob URL used instead of a raw data: URI because Chrome/Firefox block top-level
+  // navigation to data: URLs opened via target=&#34;_blank&#34; for anti-phishing reasons.
+  (function () {
+    const RESUME_PDF_URL = &#34;https://raw.githubusercontent.com/skshi1921/Portfolio/main/static/Shubham_Resume.pdf&#34;;
+
+    const resumeHtml = `&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;en&#34;&gt;
+&lt;head&gt;
+&lt;meta charset=&#34;UTF-8&#34;&gt;
+&lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+&lt;title&gt;Shubham Kumar Shivam — Resume&lt;/title&gt;
+&lt;style&gt;
+  :root{
+    --navy:#1F3864;
+    --darkgray:#333333;
+    --midgray:#555555;
+    --line:#1F3864;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    padding:24px 12px 60px;
+    background:
+      radial-gradient(circle at 20% 0%, #182353 0%, transparent 45%),
+      radial-gradient(circle at 85% 90%, #14304a 0%, transparent 50%),
+      #0B1120;
+    font-family: Calibri, &#34;Segoe UI&#34;, Arial, sans-serif;
+    color:var(--darkgray);
+  }
+  .toolbar{
+    max-width:850px;
+    margin:0 auto 18px;
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 22px;
+    border-radius:8px;
+    font-weight:600;
+    font-size:15px;
+    text-decoration:none;
+    cursor:pointer;
+    border:none;
+    box-shadow:0 2px 6px rgba(192,99,47,0.3);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{ transform:translateY(-1px); box-shadow:0 4px 10px rgba(192,99,47,0.45);}
+  .btn-pdf{ background:#C0632F; color:#fff; }
+
+  /* download confirmation modal */
+  .modal-backdrop{
+    position:fixed;
+    inset:0;
+    background:rgba(11,17,32,0.6);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .2s ease;
+    z-index:50;
+    padding:20px;
+  }
+  .modal-backdrop.open{ opacity:1; pointer-events:auto; }
+  .modal-card{
+    background:#fff;
+    border-radius:10px;
+    padding:22px 24px;
+    max-width:360px;
+    width:100%;
+    box-shadow:0 20px 50px rgba(0,0,0,0.35);
+  }
+  .modal-card h2{ margin:0 0 8px; font-size:19px; color:var(--navy); }
+  .modal-card p{ margin:0 0 16px; font-size:13.5px; color:var(--midgray); }
+  .modal-actions{ display:flex; gap:10px; justify-content:flex-end; }
+  .btn-cancel{ background:#fff; color:var(--midgray); border:2px solid #ccc; }
+
+  /* A4 page */
+  .page{
+    width:210mm;
+    min-height:297mm;
+    margin:0 auto;
+    background:#fff;
+    box-shadow:0 4px 24px rgba(0,0,0,0.18);
+    padding:16mm 15mm 14mm;
+    border-radius: 10px
+  }
+  h1.name{
+    margin:0 0 3px;
+    font-size:36px;
+    font-weight:700;
+    color:var(--navy);
+    letter-spacing:0.5px;
+  }
+  .title-line{
+    font-size:15.5px;
+    font-style:italic;
+    color:var(--midgray);
+    margin:0 0 6px;
+  }
+  .contact-line{
+    font-size:13.5px;
+    color:var(--midgray);
+    margin:0 0 10px;
+  }
+  .contact-line a{ color:var(--navy); text-decoration:underline; }
+  hr.top{
+    border:none;
+    border-top:1.5px solid var(--navy);
+    margin:8px 0 12px;
+  }
+  h2.section{
+    font-size:17px;
+    font-weight:700;
+    color:var(--navy);
+    letter-spacing:0.5px;
+    border-bottom:1.5px solid var(--navy);
+    padding-bottom:4px;
+    margin:16px 0 12px;
+    text-transform:uppercase;
+  }
+  p.summary{
+    font-size:14px;
+    line-height:1.42;
+    margin:0 0 4px;
+  }
+  .skill-row{ font-size:14px; line-height:1.5; margin:3px 0; }
+  .skill-row b{ color:var(--darkgray); }
+
+  .item-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-top:10px;
+    flex-wrap:nowrap;
+    column-gap:10px;
+  }
+  .item-title{
+    font-size:15.5px;
+    font-weight:700;
+    color:var(--navy);
+    flex:1 1 auto;
+    min-width:0;
+  }
+  .item-sub{
+    font-size:13px;
+    font-style:italic;
+    color:var(--midgray);
+  }
+  .item-links{
+    font-size:13.5px;
+    white-space:nowrap;
+  }
+  .item-links a{ color:var(--navy); text-decoration:underline; }
+  .item-date{
+    font-size:13px;
+    font-style:italic;
+    color:var(--midgray);
+    white-space:nowrap;
+  }
+  ul.bullets{
+    margin:5px 0 3px;
+    padding-left:19px;
+  }
+  ul.bullets li{
+    font-size:14px;
+    line-height:1.38;
+    margin-bottom:3px;
+  }
+  .qr-footer{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-top:26px;
+    padding-top:14px;
+    border-top:1.5px solid var(--navy);
+  }
+  .qr-footer img{ width:78px; height:78px; }
+  .qr-footer .qtext{ font-size:13.5px; }
+  .qr-footer .qtext b{ color:var(--navy); display:block; margin-bottom:2px; }
+  .qr-footer .qtext a{ color:var(--navy); }
+
+  @media (max-width:820px){
+    .page{ width:100%; padding:24px; }
+  }
+  @media print{
+    body{ background:#fff; padding:0; }
+    .toolbar{ display:none; }
+    .page{ box-shadow:none; width:auto; }
+  }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;div class=&#34;toolbar&#34;&gt;
+    &lt;button class=&#34;btn btn-pdf&#34; id=&#34;downloadPdf&#34; type=&#34;button&#34;&gt;⬇ Download Resume (PDF)&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;modal-backdrop&#34; id=&#34;dlConfirmModal&#34; role=&#34;dialog&#34; aria-modal=&#34;true&#34; aria-label=&#34;Confirm download&#34;&gt;
+    &lt;div class=&#34;modal-card&#34;&gt;
+      &lt;h2&gt;Download Resume?&lt;/h2&gt;
+      &lt;p&gt;This will download the latest PDF resume from the portfolio site.&lt;/p&gt;
+      &lt;div class=&#34;modal-actions&#34;&gt;
+        &lt;button class=&#34;btn btn-cancel&#34; id=&#34;dlCancelBtn&#34; type=&#34;button&#34;&gt;Cancel&lt;/button&gt;
+        &lt;button class=&#34;btn btn-pdf&#34; id=&#34;dlConfirmBtn&#34; type=&#34;button&#34;&gt;Yes, Download&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;page&#34;&gt;
+    &lt;h1 class=&#34;name&#34;&gt;SHUBHAM KUMAR SHIVAM&lt;/h1&gt;
+    &lt;p class=&#34;title-line&#34;&gt;AI / ML Engineer (Fresher) &amp;nbsp;•&amp;nbsp; NLP · Computer Vision · Applied ML&lt;/p&gt;
+    &lt;p class=&#34;contact-line&#34;&gt;
+      Bangalore, Karnataka &amp;nbsp;|&amp;nbsp; +91 8227053870 &amp;nbsp;|&amp;nbsp; skshivam771@gmail.com &amp;nbsp;|&amp;nbsp;
+      &lt;a href=&#34;https://www.linkedin.com/in/shubham-kumar-016b6816b/&#34; target=&#34;_blank&#34;&gt;LinkedIn&lt;/a&gt; &amp;nbsp;|&amp;nbsp;
+      &lt;a href=&#34;https://github.com/ShubhamAIML&#34; target=&#34;_blank&#34;&gt;GitHub&lt;/a&gt; &amp;nbsp;|&amp;nbsp;
+      &lt;a href=&#34;https://portfolio-mxx7.onrender.com/&#34; target=&#34;_blank&#34;&gt;Portfolio&lt;/a&gt;
+    &lt;/p&gt;
+    &lt;hr class=&#34;top&#34;&gt;
+
+    &lt;h2 class=&#34;section&#34;&gt;Summary&lt;/h2&gt;
+    &lt;p class=&#34;summary&#34;&gt;AI/ML fresher with hands-on, end-to-end project experience across NLP, Computer Vision, and tabular data — from building a GPT-style Transformer from scratch to deploying production ML APIs on Render and Railway. Comfortable owning the full pipeline: data cleaning, model selection, class-imbalance handling (SMOTE), and shipping working products used by real users. Seeking an AI/ML Engineer, Data Analyst, or Data Scientist role to apply this foundation at scale.&lt;/p&gt;
+
+    &lt;h2 class=&#34;section&#34;&gt;Skills&lt;/h2&gt;
+    &lt;p class=&#34;skill-row&#34;&gt;&lt;b&gt;Language:&lt;/b&gt; Python, SQL&lt;/p&gt;
+    &lt;p class=&#34;skill-row&#34;&gt;&lt;b&gt;ML / DL:&lt;/b&gt; PyTorch, TensorFlow, scikit-learn, XGBoost, SMOTE, Pandas, NumPy&lt;/p&gt;
+    &lt;p class=&#34;skill-row&#34;&gt;&lt;b&gt;NLP &amp; CV:&lt;/b&gt; spaCy, NLTK, OpenCV, Transformers (HuggingFace), TF-IDF&lt;/p&gt;
+    &lt;p class=&#34;skill-row&#34;&gt;&lt;b&gt;Deployment &amp; Tools:&lt;/b&gt; Flask, Django, Render, Railway, Docker (basic), Git/GitHub&lt;/p&gt;
+
+    &lt;h2 class=&#34;section&#34;&gt;Projects&lt;/h2&gt;
+
+    &lt;div class=&#34;item-header&#34;&gt;
+      &lt;span class=&#34;item-title&#34;&gt;WriteFusion AI &lt;span class=&#34;item-sub&#34;&gt;| Python · TensorFlow · Flask · NLP · Transformers&lt;/span&gt;&lt;/span&gt;
+      &lt;span class=&#34;item-links&#34;&gt;&lt;a href=&#34;https://writefusion-ai-1.onrender.com&#34; target=&#34;_blank&#34;&gt;Live&lt;/a&gt;&amp;nbsp;|&amp;nbsp;&lt;a href=&#34;https://github.com/ShubhamAIML/WriteFusion-AI&#34; target=&#34;_blank&#34;&gt;GitHub&lt;/a&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;ul class=&#34;bullets&#34;&gt;
+      &lt;li&gt;&lt;b&gt;Built a GPT-style decoder-only Transformer language model from scratch&lt;/b&gt; (causal self-attention, 2 layers, 4 heads, 3.4M parameters), trained on a self-cleaned 2.7M-word, 860K-sentence English corpus.&lt;/li&gt;
+      &lt;li&gt;&lt;b&gt;Architected and deployed a production Flask REST API&lt;/b&gt; (Gunicorn + Render) serving real-time next-word prediction, multi-strategy text generation, and perplexity scoring.&lt;/li&gt;
+      &lt;li&gt;&lt;b&gt;Built a full interactive frontend from scratch&lt;/b&gt; — live ghost-text prediction, attention-weight visualization, and 8 configurable decoding strategies — owning the pipeline end-to-end from data to deployed product.&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div class=&#34;item-header&#34;&gt;
+      &lt;span class=&#34;item-title&#34;&gt;MindScan — Teen Depression Risk Predictor &lt;span class=&#34;item-sub&#34;&gt;| Python · Django · XGBoost · SMOTE · scikit-learn&lt;/span&gt;&lt;/span&gt;
+      &lt;span class=&#34;item-links&#34;&gt;&lt;a href=&#34;https://mindscan-lkpf.onrender.com&#34; target=&#34;_blank&#34;&gt;Live&lt;/a&gt;&amp;nbsp;|&amp;nbsp;&lt;a href=&#34;https://github.com/ShubhamAIML/MindSacn&#34; target=&#34;_blank&#34;&gt;GitHub&lt;/a&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;ul class=&#34;bullets&#34;&gt;
+      &lt;li&gt;&lt;b&gt;Solved severe class imbalance&lt;/b&gt; (~2.6% positive rate across 1,200 records) using SMOTE, optimizing for Recall and F1 over raw accuracy — critical for clinical-style ML.&lt;/li&gt;
+      &lt;li&gt;&lt;b&gt;Benchmarked Logistic Regression, Random Forest, and XGBoost&lt;/b&gt;; selected XGBoost for the strongest F1 score on the minority class.&lt;/li&gt;
+      &lt;li&gt;&lt;b&gt;Deployed to production on Railway&lt;/b&gt; with real-time inference and personalized risk recommendations.&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div class=&#34;item-header&#34;&gt;
+      &lt;span class=&#34;item-title&#34;&gt;AI Symptom Checker &lt;span class=&#34;item-sub&#34;&gt;| Python · Flask · scikit-learn · NLP&lt;/span&gt;&lt;/span&gt;
+      &lt;span class=&#34;item-links&#34;&gt;&lt;a href=&#34;https://ai-symptom-checker-dlup.onrender.com&#34; target=&#34;_blank&#34;&gt;Live&lt;/a&gt;&amp;nbsp;|&amp;nbsp;&lt;a href=&#34;https://github.com/ShubhamAIML/AI-Symptom-Checker&#34; target=&#34;_blank&#34;&gt;GitHub&lt;/a&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;ul class=&#34;bullets&#34;&gt;
+      &lt;li&gt;&lt;b&gt;Developed a disease-prediction app achieving 92% accuracy&lt;/b&gt; on benchmark data.&lt;/li&gt;
+      &lt;li&gt;Deployed the Flask app and validated it in real-world use with &lt;b&gt;100+ users&lt;/b&gt; for real-time predictions.&lt;/li&gt;
+      &lt;li&gt;&lt;b&gt;Designed a responsive UI that cut average query time by 40%&lt;/b&gt;.&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h2 class=&#34;section&#34;&gt;Work Experience&lt;/h2&gt;
+    &lt;div class=&#34;item-header&#34;&gt;
+      &lt;span class=&#34;item-title&#34;&gt;AI &amp; ML Intern &lt;span class=&#34;item-sub&#34;&gt;— ElevateLab&lt;/span&gt;&lt;/span&gt;
+      &lt;span class=&#34;item-date&#34;&gt;Apr 2025 – May 2025 &amp;nbsp;|&amp;nbsp; &lt;a href=&#34;https://raw.githubusercontent.com/skshi1921/Portfolio/main/Tech%20Certificate/AI_ML%20Internship%20Certificate.pdf&#34; target=&#34;_blank&#34;&gt;Certificate&lt;/a&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;ul class=&#34;bullets&#34;&gt;
+      &lt;li&gt;Developed and deployed end-to-end Machine Learning solutions using Python, Flask, scikit-learn, and TensorFlow, taking models from prototype to integration.&lt;/li&gt;
+      &lt;li&gt;Built and evaluated ML models with data preprocessing and feature engineering to improve model reliability on real-world data.&lt;/li&gt;
+      &lt;li&gt;Integrated trained AI models into web applications to deliver real-time predictions and production-ready solutions.&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h2 class=&#34;section&#34;&gt;Education&lt;/h2&gt;
+    &lt;div class=&#34;item-header&#34;&gt;
+      &lt;span class=&#34;item-title&#34;&gt;Major Certification in Artificial Intelligence — IIT Ropar &lt;span class=&#34;item-sub&#34;&gt;(in collaboration with Masai, NSDC)&lt;/span&gt;&lt;/span&gt;
+      &lt;span class=&#34;item-date&#34;&gt;Aug 2024 – Feb 2026 &amp;nbsp;|&amp;nbsp; &lt;a href=&#34;https://raw.githubusercontent.com/skshi1921/Portfolio/main/Tech%20Certificate/iitrprai_24081712_certificate.pdf&#34; target=&#34;_blank&#34;&gt;View Certificate&lt;/a&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;ul class=&#34;bullets&#34;&gt;
+      &lt;li&gt;Certificate Ref. No. IITRPRAI-CC0894 — issued by IIT Ropar, covering core AI/ML foundations.&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h2 class=&#34;section&#34;&gt;Certifications&lt;/h2&gt;
+    &lt;ul class=&#34;bullets&#34;&gt;
+      &lt;li&gt;xto10x Hackathon Edition #3 – Masai School — &lt;a href=&#34;https://raw.githubusercontent.com/skshi1921/Portfolio/main/Tech%20Certificate/Masai_hackethon_Certificate.pdf&#34; target=&#34;_blank&#34;&gt;View Certificate&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;b&gt;Built AI in Personalized Learning&lt;/b&gt;, a RAG-based learning assistant that retrieves relevant study material from a custom knowledge base to answer learner queries with context-grounded accuracy.&lt;/li&gt;
+      &lt;li&gt;Designed the retrieval pipeline using embeddings and Python to dynamically tailor explanations and recommendations to each learner&#39;s pace and level.&lt;/li&gt;
+      &lt;li&gt;Recognized for innovation and data-driven decision-making.&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div class=&#34;qr-footer&#34;&gt;
+      &lt;a href=&#34;https://bridge2portfolio.edgeone.dev/&#34; target=&#34;_blank&#34;&gt;
+        &lt;img src=&#34;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUoAAAFKAQAAAABTUiuoAAACXElEQVR4nO2bQYqkQBBFX3QKLlPoA8xR9AZ1pLmaHqUOMGAuBeXPIlPtns3YA3YlTMSiKKm3+BD8yIgwy8TFmN6ukuCoo46+QbISA5sxmRmwmZk17D81lWh1lCBJKiWx14pZF0SvFXpJ0lyNVkehuCc1QGpF/2zQmB/NbLhdgKOXovn0FFYANHWYpsf6DQIc/edsgREXUz93GDSf0vVyrY7mbJ1tvGDD8rf0DkQB6T4Bjn4R3XLfB4ANqRX9HGQDwGRmZt29Ahy9GE1xD1AsFBfT1AXyx+0CHP0CijSHD8176eXjCsSzq5c0vlyro+Rhqp+DNBKkMR4DVo4gaQ6erRrQbCaNwOkojbG4LCdK7q260FhSJj0bbEityuap24ypu1+Ao1did88KEFRq4umtY/3k3no9ypkojbkSrvkY2wE/t+pBS5eRc6RjdxF3Z43g3qoGPQqejnJ4VMezwYierSrQMm+V0ldyVCavea+T7q1K0AbY8tJJ02PGICAIMgir5W/pfa1Aq6Ol6o3A2WDkOVnHasO9VQm6V8L93NJIqYkfk+fnVl1oarBhz5HGuJj0bGDqwIbk9zKqQJucHlgRqUMkg/7Z5nMLUme1aHWUDxvcPG/tI3Kuif2M94TVoA3HbQzL3mJDpDbvMkQK+8j8cq2OZrTceQKYrJUNcTH6ecuvjW24XYCjl+LPO0/HlYxybk2PX8ZkweetGlGNccmO0sjRDsb12wQ4+le0rAjjig2p1f4+ebN9BrtbgKOX0ePOUzKj12IQF2P6sQKplf2cq9H6f6Pm/why1NFb0N+mB6rn0PPMpAAAAABJRU5ErkJggg==&#34; alt=&#34;QR code - opens portfolio&#34;&gt;
+      &lt;/a&gt;
+      &lt;div class=&#34;qtext&#34;&gt;
+        &lt;b&gt;Scan the QR to open full portfolio, live projects &amp; certificates&lt;/b&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;script&gt;
+  const RESUME_PDF_URL = &#34;${RESUME_PDF_URL}&#34;;
+  const dlModal = document.getElementById(&#39;dlConfirmModal&#39;);
+  const dlBtn = document.getElementById(&#39;downloadPdf&#39;);
+  const dlCancelBtn = document.getElementById(&#39;dlCancelBtn&#39;);
+  const dlConfirmBtn = document.getElementById(&#39;dlConfirmBtn&#39;);
+
+  dlBtn.addEventListener(&#39;click&#39;, () =&gt; {
+    dlModal.classList.add(&#39;open&#39;);
+  });
+  dlCancelBtn.addEventListener(&#39;click&#39;, () =&gt; {
+    dlModal.classList.remove(&#39;open&#39;);
+  });
+  dlModal.addEventListener(&#39;click&#39;, (e) =&gt; {
+    if(e.target === dlModal) dlModal.classList.remove(&#39;open&#39;);
+  });
+  document.addEventListener(&#39;keydown&#39;, (e) =&gt; {
+    if(e.key === &#39;Escape&#39; &amp;&amp; dlModal.classList.contains(&#39;open&#39;)) dlModal.classList.remove(&#39;open&#39;);
+  });
+
+  dlConfirmBtn.addEventListener(&#39;click&#39;, async () =&gt; {
+    dlModal.classList.remove(&#39;open&#39;);
+    try {
+      const res = await fetch(RESUME_PDF_URL, { mode: &#39;cors&#39; });
+      if(!res.ok) throw new Error(&#39;bad response&#39;);
+      const blob = await res.blob();
+      const blobUrl = URL.createObjectURL(blob);
+      const a = document.createElement(&#39;a&#39;);
+      a.href = blobUrl;
+      a.download = &#34;Shubham-Kumar-Shivam-Resume.pdf&#34;;
+      a.target = &#34;_self&#34;;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() =&gt; URL.revokeObjectURL(blobUrl), 5000);
+    } catch(err) {
+      // fallback: same-tab direct link if fetch/CORS fails
+      const a = document.createElement(&#39;a&#39;);
+      a.href = RESUME_PDF_URL;
+      a.download = &#34;Shubham-Kumar-Shivam-Resume.pdf&#34;;
+      a.target = &#34;_self&#34;;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+  });
+&lt;\/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+`;
+    const resumeBlob = new Blob([resumeHtml], { type: &#34;text/html&#34; });
+    const resumeUrl = URL.createObjectURL(resumeBlob);
+    document.getElementById(&#39;resumeOpenBtn&#39;).href = resumeUrl;
+  })();
+
+  // generic modal open/close helper
+  function wireModal(openBtnId, modalId, closeBtnId){
+    const modal = document.getElementById(modalId);
+    const openBtn = document.getElementById(openBtnId);
+    const closeBtn = document.getElementById(closeBtnId);
+    function open(){ modal.classList.add(&#39;open&#39;); closeBtn.focus(); }
+    function close(){ modal.classList.remove(&#39;open&#39;); openBtn.focus(); }
+    openBtn.addEventListener(&#39;click&#39;, open);
+    closeBtn.addEventListener(&#39;click&#39;, close);
+    modal.addEventListener(&#39;click&#39;, (e) =&gt; { if(e.target === modal) close(); });
+    document.addEventListener(&#39;keydown&#39;, (e) =&gt; {
+      if(e.key === &#39;Escape&#39; &amp;&amp; modal.classList.contains(&#39;open&#39;)) close();
+    });
+  }
+  wireModal(&#39;certOpenBtn&#39;, &#39;certModal&#39;, &#39;certCloseBtn&#39;);
+
+  // certificate download confirmation + same-tab auto-download
+  (function () {
+    const certDlModal = document.getElementById(&#39;certDlModal&#39;);
+    const certDlFileName = document.getElementById(&#39;certDlFileName&#39;);
+    const certDlCloseBtn = document.getElementById(&#39;certDlCloseBtn&#39;);
+    const certDlCancelBtn = document.getElementById(&#39;certDlCancelBtn&#39;);
+    const certDlConfirmBtn = document.getElementById(&#39;certDlConfirmBtn&#39;);
+    let pendingUrl = null;
+    let pendingName = null;
+
+    function openCertDlModal(url, name){
+      pendingUrl = url;
+      pendingName = name;
+      certDlFileName.textContent = name;
+      certDlModal.classList.add(&#39;open&#39;);
+    }
+    function closeCertDlModal(){
+      certDlModal.classList.remove(&#39;open&#39;);
+      pendingUrl = null;
+      pendingName = null;
+    }
+
+    document.querySelectorAll(&#39;.cert-item&#39;).forEach(btn =&gt; {
+      btn.addEventListener(&#39;click&#39;, () =&gt; {
+        openCertDlModal(btn.getAttribute(&#39;data-cert-url&#39;), btn.getAttribute(&#39;data-cert-name&#39;));
+      });
+    });
+
+    certDlCloseBtn.addEventListener(&#39;click&#39;, closeCertDlModal);
+    certDlCancelBtn.addEventListener(&#39;click&#39;, closeCertDlModal);
+    certDlModal.addEventListener(&#39;click&#39;, (e) =&gt; { if(e.target === certDlModal) closeCertDlModal(); });
+    document.addEventListener(&#39;keydown&#39;, (e) =&gt; {
+      if(e.key === &#39;Escape&#39; &amp;&amp; certDlModal.classList.contains(&#39;open&#39;)) closeCertDlModal();
+    });
+
+    certDlConfirmBtn.addEventListener(&#39;click&#39;, async () =&gt; {
+      const url = pendingUrl;
+      const name = pendingName;
+      closeCertDlModal();
+      try {
+        const res = await fetch(url, { mode: &#39;cors&#39; });
+        if(!res.ok) throw new Error(&#39;bad response&#39;);
+        const blob = await res.blob();
+        const blobUrl = URL.createObjectURL(blob);
+        const a = document.createElement(&#39;a&#39;);
+        a.href = blobUrl;
+        a.download = name;
+        a.target = &#34;_self&#34;;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(() =&gt; URL.revokeObjectURL(blobUrl), 5000);
+      } catch(err) {
+        const a = document.createElement(&#39;a&#39;);
+        a.href = url;
+        a.download = name;
+        a.target = &#34;_self&#34;;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }
+    });
+  })();
+
+  const toast = document.getElementById(&#39;toast&#39;);
+  let toastTimer;
+  document.querySelectorAll(&#39;.contact-row&#39;).forEach(btn =&gt; {
+    btn.addEventListener(&#39;click&#39;, async () =&gt; {
+      const value = btn.getAttribute(&#39;data-copy&#39;);
+      try{
+        await navigator.clipboard.writeText(value);
+      }catch(e){
+        const ta = document.createElement(&#39;textarea&#39;);
+        ta.value = value;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand(&#39;copy&#39;);
+        document.body.removeChild(ta);
+      }
+      toast.textContent = &#39;Copied: &#39; + value;
+      toast.classList.add(&#39;show&#39;);
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() =&gt; toast.classList.remove(&#39;show&#39;), 1800);
+    });
+  });
+    </script>
+  </body>
+</html>
